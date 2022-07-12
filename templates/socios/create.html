@@ -1,0 +1,42 @@
+{% include 'socios/header.html' %}
+{% with messages= get_flashed_messages() %}
+ {% if messages %} 
+ <div class="alert alert-danger" role="alert"> 
+    {% for message in messages %} 
+    {{message}}
+     {% endfor %} 
+    </div> 
+    {% endif %} 
+    {% endwith %}
+    
+<div class="card">
+    <div class="card-header">
+        Ingresar socio
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos del socio</h5>
+        <p class="card-text">
+           
+            <form method="POST" action="/store" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="txtApellido">Apellido: </label>
+                    <input id="txtApellido" class="form-control" type="text" name="txtApellido">
+                </div>
+                <div class="form-group">
+                    <label for="txtNombres">Nombres: </label>
+                    <input id="txtNombres" class="form-control" type="text" name="txtNombres">
+                </div>
+                <div class="form-group">
+                    <label for="txtCat">Categoría: </label>
+                    <input id="txtCat" class="form-control" type="text" name="txtCat">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Agregar">
+                    <a href="{{url_for('index')}}" class="btn btn-secondary">Volver</a>
+                </div>
+                </form>
+
+        </p>
+    </div>
+</div>
+{% include 'socios/footer.html' %}

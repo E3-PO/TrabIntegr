@@ -1,0 +1,35 @@
+{% include 'socios/header.html' %}
+<br>
+<a href="{{url_for('create')}}" class="btn btn-primary">
+Ingrese nuevo socio
+</a>
+<br>
+<br>
+    <table class="table table-light">
+        <thead class="thead-light">
+        <tr>
+            <th>Socio #</th>
+            <th>Apellido</th>
+            <th>Nombres</th>
+            <th>Fecha de inscripción</th>
+            <th>Categoría</th>
+            <th>Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for socio in socios %}
+        <tr>
+            <td>{{socio[0]}}</td>
+            <td>{{socio[1]}}</td>
+            <td>{{socio[2]}}</td>
+            <td>{{socio[3]}}</td>
+            <td>{{socio[4]}}</td>
+            <td>
+                <a class="btn btn-success" href="/edit/{{socio[0]}}">Editar</a> |
+                <a class="btn btn-danger" onclick="return confirm('¿Está seguro que desea borrar al socio?')" href="/destroy/{{socio[0]}}"> Eliminar</a>
+                </td>
+        </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include 'socios/footer.html' %}
